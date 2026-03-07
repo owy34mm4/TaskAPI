@@ -45,30 +45,30 @@
 			- GetAllTasks -> Traer Todas las tasks || status = ?
 			- GetAllHistoryTaskByTeamId -> Obtener todos los historicos de Tarea por EquipoId || status = ?
 			- DeleteTaskById -> Eliminar Tarea Por Id || status = ?
-
--
-     
+------
 
 
- - Frontend-> 
- 
-	  -  Vista Inicio Sesion
-		  - Botón Olvidó Contraseña || status =?
-		  - Boton Login || status =?
-		  - Contraseña Oculta ( Boton ojito ) || status =?
-	  - Vista DashBoard Seleccion Equipos del usuario ( HomePage)
-		  - Modal Y Boton para unirse a un equipo  || status =?
-		  -  Botón Crear Equipo  || status =?
-		  - Listado con todos los equipos a los que pertenece el usuario || status =?
-	  - Vista DashBoard Equipo Seleccionado
+
+
+
+- Frontend-> 
+	- Vista Inicio Sesion
+		 - Botón Olvidó Contraseña || status =?
+		- Boton Login || status =?
+		- Contraseña Oculta ( Boton ojito ) || status =?
+	- Vista DashBoard Seleccion Equipos del usuario ( HomePage)
+		- Modal Y Boton para unirse a un equipo  || status =?
+		-   Botón Crear Equipo  || status =?
+		- Listado con todos los equipos a los que pertenece el usuario || status =?
+	- Vista DashBoard Equipo Seleccionado
 		  -  Si es admin, permite acciones de edicion || status =?
 		  - Con permisos suficientes, permite crear tareas || status =?
-	  - Vista DashBoad Tareas en el Equipo
-		  - Asignar Tareas a Usuarios || status =?
-		  - Editar Tarea si el privilegio lo permite || status = ? 
-	  - Seccion Configuraciones de la Cuenta
-		  - Boton y Modal Eliminar Cuenta  || status =?
-		  - Cambiar informacion de Cuenta   || status =?
+	- Vista DashBoad Tareas en el Equipo
+		- Asignar Tareas a Usuarios || status =?
+		- Editar Tarea si el privilegio lo permite || status = ? 
+	- Seccion Configuraciones de la Cuenta
+		 - Boton y Modal Eliminar Cuenta  || status =?
+		- Cambiar informacion de Cuenta   || status =?
 	  
 -
 
