@@ -1,6 +1,6 @@
 {
  "name": "TaskAPI_dev",
- "dockerComposeFile": ["../../../docker-compose.dev.yml"],
+ "dockerComposeFile": ["../../../dockerization/docker-compose.dev.yml"],
  "service": "backend",
  "workspaceFolder": "/workspace",
  "overrideCommand": true,
