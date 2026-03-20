@@ -1,0 +1,18 @@
+//build.gradle ( bootstrap )
+plugins {
+    id 'org.springframework.boot'
+}
+
+dependencies{
+    //Basic Spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    // Database
+    runtimeOnly 'com.mysql:mysql-connector-j'
+}
+
+bootRun {
+    mainClass = 'com.taskapi.TaskAPIApplication'
+}
