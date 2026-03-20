@@ -9,7 +9,7 @@
 
 ###### Desarrollo 
     #Bash
-    docker compose up -f docker-compose.dev.yml 
+    docker compose up -f dockerization/docker-compose.dev.yml 
 
 ###### Produccion
     ....
