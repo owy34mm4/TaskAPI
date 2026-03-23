@@ -42,7 +42,7 @@ services:
 
   backend:
     build: 
-      context: src/Backend
+      context: ../src/Backend
       dockerfile: containerization/Dockerfile.dev
     mem_limit: 4g
     cpus: 3
