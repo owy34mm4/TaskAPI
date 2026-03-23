@@ -1,0 +1,43 @@
+name: Build and Push to Docker Hub
+
+on:
+  push:
+    branches:
+      - "main"  # Se ejecuta cuando haces push a la rama main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+    # --- 'brings' repo folder to works w it
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reemplazar application.yml con configuración de producción  
+        run: |   
+          printf '%s' "${{ secrets.APPLICATION_YML }}" > ./src/Backend/src/bootstrap/src/main/resources/application-prod.yml
+          
+
+      # ------ Bring Docker Capabilities ------------
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # ----- Login DockerHub --------
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: src/Backend
+          file: containerization/Dockerfile.deploy
+          push: true
+          platforms: linux/amd64
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
+            ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:${{ github.sha }}
+           
+
