@@ -7,6 +7,10 @@ build/
 
 **/**.class
 
+bootstrap/src/main/java/resources/application-local.yaml
+/workspace/bootstrap/src/main/java/resources/application-local.yaml
+**/application-local.yaml
+
 ### STS ###
 .apt_generated
 .classpath

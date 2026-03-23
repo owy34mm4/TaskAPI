@@ -5,6 +5,7 @@ server:
 spring:
   application:
     name: TaskAPI
+
   datasource:
     url : ${SPRING_DATASOURCE_URL}
     username : ${db_username}
@@ -35,6 +36,7 @@ spring:
   autoconfigure:
     exclude:
     - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
   jpa:
     show-sql  : true
     hibernate :
@@ -42,7 +44,13 @@ spring:
     properties:
       hibernate:
         dialect : org.hibernate.dialect.MySQLDialect
-        
+
+jwt:
+  expiration : ${JWT_EXPIRATION_TIME}
+  secret: ${JWT_SECRET_KEY}
+  password-rest:
+    token-expiration-minutes: 30
+    
 springdoc:  
   swagger-ui:  
     enabled: true  
