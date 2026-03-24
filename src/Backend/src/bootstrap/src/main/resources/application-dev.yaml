@@ -1,0 +1,60 @@
+# bootstrap/src/main/java/resources/application-dev.yml
+
+server:
+  address: 0.0.0.0
+  port: 8080
+
+spring:
+  application:
+    name: TaskAPI
+
+  datasource:
+    url : ${SPRING_DATASOURCE_URL}
+    username : ${db_username}
+    password : ${db_password}
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    hikari:
+      autoCommit: true
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      keepaliveTime: 120000
+      maxLifetime: 1800000
+      maximumPoolSize: 50
+      minimumIdle: 8
+      poolName: PoolConnection-TaskAPI
+      leakDetectionThreshold: 30000
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false  
+
+  autoconfigure:
+    exclude:
+    - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+  jpa:
+    show-sql  : true
+    hibernate :
+      ddl-auto : create-drop # update \\ validate \\ create-drop
+    properties:
+      hibernate:
+        dialect : org.hibernate.dialect.MySQLDialect
+
+jwt:
+  expiration : ${JWT_EXPIRATION_TIME}
+  secret: ${JWT_SECRET_KEY}
+  password-rest:
+    token-expiration-minutes: 30
+    
+springdoc:  
+  swagger-ui:  
+    enabled: true  
+    path: /swagger-ui.html
+  

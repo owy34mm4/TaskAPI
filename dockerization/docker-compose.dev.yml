@@ -1,0 +1,82 @@
+# docker-compose.yml
+
+name: TaskAPI_dev
+
+services:
+  db:
+    image: mysql:8.4
+    mem_limit: 1g
+    cpus: 0.5
+    container_name: MySQL_DB
+    env_file:
+      - .env.database.example
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    ports:
+      - "127.0.0.1:227:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -uroot --password=$$MYSQL_ROOT_PASSWORD || exit 1"] # -> Ping
+      interval: 30s 
+      timeout: 15s 
+      retries: 2
+      start_period : 120s
+    networks:
+      - Data-Back
+      - Data-DataManager
+
+  phpmyadmin: 
+    container_name: PHPMyAdmin_Dev
+    image: phpmyadmin:5.2.3-apache
+    mem_limit: 1g
+    cpus: "0.5"
+    ports:  
+      - "127.0.0.1:749:80" 
+    env_file:
+      - .env.database.example
+    depends_on:  
+      db:
+        condition : service_healthy
+    networks:
+      - Data-DataManager
+
+  backend:
+    build: 
+      context: ../src/Backend
+      dockerfile: containerization/Dockerfile.dev
+    mem_limit: 4g
+    cpus: 3
+    container_name: Spring_Backend
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env.backend.example
+    ports:
+      - "900:8080"
+    volumes:
+      - gradle-cache:/home/vscode/.gradle
+      - ../src/Backend/src:/workspace
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - Data-Back
+
+  # frontend:
+
+
+
+volumes:
+  mysqldata:
+  gradle-cache:
+
+networks:
+  Data-Back:
+    driver: bridge
+  Data-DataManager:
+    driver: bridge
+  Back-Front:
+    driver: bridge
+

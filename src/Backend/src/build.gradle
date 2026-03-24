@@ -1,0 +1,103 @@
+//build.gradle ( root )
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.0' apply false
+	id 'io.spring.dependency-management' version '1.1.7'apply false
+}
+
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations{
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+allprojects {
+    group = 'com.taskapi'
+    version = '1.0.0'
+
+    repositories{ mavenCentral() }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+
+    tasks.withType(Test).configureEach {  
+        useJUnitPlatform()
+    }
+
+    sourceSets{
+        main {  
+            java { srcDirs = ['src/main/java'] }  
+            resources { srcDirs = ['src/main/resources'] }  
+        }  
+        test {  
+            java { srcDirs = ['src/test/java'] }  
+            resources { srcDirs = ['src/test/resources'] }  
+        }
+    }
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+	dependencyManagement {  
+        imports {  
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.0"  
+        }  
+    }
+	
+	//Dependencias comunes en todos los submodulos
+    dependencies {
+
+        // implementation (platform("software.amazon.awssdk:bom:2.41.4"))
+        
+        implementation 'org.springframework:spring-context'
+        
+        compileOnly 'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+        // Testing ---
+            // Mocks
+                testImplementation 'org.mockito:mockito-core:5.11.0'  
+                testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'  
+
+            testImplementation platform("org.junit:junit-bom:5.10.2")  
+            testImplementation "org.junit.jupiter:junit-jupiter"
+            testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    }
+
+    test {
+        useJUnitPlatform{
+            excludeTags "integration"
+        }
+        
+        // Tarea separada solo para ITs (requiere Docker Funcional {Container in Container Error})  
+        tasks.register("integrationTest", Test) {  
+            useJUnitPlatform {  
+                includeTags "integration"  
+            }  
+            group = "verification"  
+            description = "Runs integration tests (requires Docker)"  
+        }
+        
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    }
+
+}

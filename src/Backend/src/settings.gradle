@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'taskapi'
+
+include 'bootstrap'
+include 'user'
+include 'security'
+include 'shared-kernel'
+include 'web'
+
+project(":bootstrap").projectDir = file("./bootstrap")
+project(":user").projectDir = file("./user")
+project(":security").projectDir = file("./security")
+project(":web").projectDir = file("./web")
+project(":shared-kernel").projectDir = file("./shared-kernel")

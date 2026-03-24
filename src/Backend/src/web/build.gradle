@@ -1,0 +1,12 @@
+//build.gralde ( web )
+
+dependencies{
+    implementation project(':shared-kernel')
+    implementation project(':user')
+    implementation project(':security')
+    // implementation project()
+    // implementation project()
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+}

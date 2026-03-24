@@ -1,0 +1,12 @@
+//build.gradle ( shared-kernel )
+
+
+plugins{
+    id 'java-library'  
+    id 'java-test-fixtures'
+}
+
+
+dependencies{
+    testFixturesImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
+}
