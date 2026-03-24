@@ -2,7 +2,7 @@
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.0' apply false
-	id 'io.spring.dependency-management' version '1.1.7'
+	id 'io.spring.dependency-management' version '1.1.7'apply false
 }
 
 
@@ -63,18 +63,24 @@ subprojects {
         }  
     }
 	
-	//Dependencias comuines en trodsos los submodulos
+	//Dependencias comunes en todos los submodulos
     dependencies {
 
-        implementation (platform("software.amazon.awssdk:bom:2.41.4"))
+        // implementation (platform("software.amazon.awssdk:bom:2.41.4"))
         
-        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
-
+        implementation 'org.springframework:spring-context'
+        
         compileOnly 'org.projectlombok:lombok:1.18.30'
         annotationProcessor 'org.projectlombok:lombok:1.18.30'
-        testImplementation platform("org.junit:junit-bom:5.10.2")  
-        testImplementation "org.junit.jupiter:junit-jupiter"
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+        // Testing ---
+            // Mocks
+                testImplementation 'org.mockito:mockito-core:5.11.0'  
+                testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'  
+
+            testImplementation platform("org.junit:junit-bom:5.10.2")  
+            testImplementation "org.junit.jupiter:junit-jupiter"
+            testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     }
 
     test {

@@ -2,14 +2,22 @@ package com.taskapi.shared.domain.exceptions;
 
 
 /**
- * Recibe un String message
- *  Ej -> new BussinesRuleViolation("Usuario ya existe") returns -> "BUINESS_RULE_VIOLATION Usuario ya existe"
+ * <ul>
+ * PARAMS
+ * <li>String message</li>
+ * <pre>
+ *  new BussinesRuleViolation("Usuario ya existe")
+ * </pre>
+ * <b>returns</b>
+ * <br>
+ * <pre>
+ * "BUINESS_RULE_VIOLATION Usuario ya existe"
+ * </pre>
  */
 public class BussinesRuleException extends DomainException {
 
-    public BussinesRuleException(String code, String message) {
+    public BussinesRuleException( String message) {
         super("BUSSINES_RULE_VIOLATION", message);
-        //TODO Auto-generated constructor stub
     }
     
 }

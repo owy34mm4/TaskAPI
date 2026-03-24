@@ -1,10 +1,18 @@
 package com.taskapi.shared.domain.exceptions;
 
 /**
- * 
- * Recibe parametro String que refiere al nombre dle recurso que no se pudo encontrar
- * 
- * ej -> new NotFoundException("Order") returns "NOT_FOUND Order Not Found in Repos"
+ * <ul>
+ * <li>String 'resource' : refiere al nombre del recurso que no se pudo encontrar</li>
+ * </ul>
+ * <br>
+ * <pre>
+ * repository.findById(id)
+            .orElseThrow(()-> new NotFoundException("User")).toDomain();
+ * </pre>
+ * <b>returns</b>
+ * <pre>
+ * "NOT_FOUND Order Not Found in Repos
+ * </pre>
  */
 public class NotFoundException extends DomainException{
 

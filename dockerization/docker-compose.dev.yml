@@ -1,3 +1,5 @@
+# docker-compose.yml
+
 name: TaskAPI_dev
 
 services:
@@ -56,7 +58,7 @@ services:
       - "900:8080"
     volumes:
       - gradle-cache:/home/vscode/.gradle
-      - ./src/Backend/src:/workspace
+      - ../src/Backend/src:/workspace
     security_opt:
       - no-new-privileges:true
     networks:

@@ -42,6 +42,12 @@ spring:
     properties:
       hibernate:
         dialect : org.hibernate.dialect.MySQLDialect
+
+jwt:
+  expiration : ${JWT_EXPIRATION_TIME}
+  secret: ${JWT_SECRET_KEY}
+  password-rest:
+    token-expiration-minutes: 30
         
 springdoc:  
     swagger-ui:  

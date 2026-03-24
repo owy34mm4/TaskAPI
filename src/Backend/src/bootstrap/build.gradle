@@ -4,15 +4,29 @@ plugins {
 }
 
 dependencies{
-    //Basic Spring
+    testImplementation testFixtures(project(':shared-kernel'))
+    
+    implementation project(':user')
+    implementation project(':security')
+    implementation project(':web')
+    implementation project(':shared-kernel')
+    
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
-    // Database
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    // Testing
+        //Core
+        testImplementation 'org.springframework.boot:spring-boot-starter-test' 
+
+        // Testcontainers (MySQL real en tests)  
+        testImplementation 'org.testcontainers:junit-jupiter:1.19.7'  
+        testImplementation 'org.testcontainers:mysql:1.19.7'  
+    
+        // RestAssured (tests HTTP)  
+        testImplementation 'io.rest-assured:rest-assured:5.4.0'  
+        testImplementation 'io.rest-assured:spring-mock-mvc:5.4.0'
 }
 
 bootRun {
-    mainClass = 'com.taskapi.TaskAPIApplication'
+    mainClass = 'com.taskapi.bootstrap.TaskAPIApplication'
 }
