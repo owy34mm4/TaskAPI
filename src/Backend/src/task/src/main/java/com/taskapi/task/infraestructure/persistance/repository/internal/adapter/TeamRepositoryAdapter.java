@@ -19,7 +19,6 @@ public class TeamRepositoryAdapter implements ITeamRepository {
     @Override
     public Team save(Team entity) {
         return repository.save(TeamTable.fromDomain(entity)).toDomain();
-       
     }
     
 }

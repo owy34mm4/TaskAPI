@@ -1,4 +1,4 @@
-package com.taskapi.task.infraestructure.persistance.entity.permissions;
+package com.taskapi.task.infraestructure.persistance.entity.tasks;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,9 +10,9 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Entity  
-@Table(name = "permissions")  
+@Table(name = "tasks_status")  
 @Builder @Getter  
-public class PermissionsTable {  
+public class TaskStatusTable {  
   
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Long id;  
@@ -20,5 +20,7 @@ public class PermissionsTable {
     @Column(nullable = false)  
     private String nombre;  
   
-    private String descripcion;  
+    // ← ID externo, módulo user  
+    @Column(name = "creator_id")  
+    private Long creatorId;  
 }

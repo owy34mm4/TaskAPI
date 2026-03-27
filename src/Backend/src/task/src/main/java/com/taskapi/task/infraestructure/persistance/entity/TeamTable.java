@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.taskapi.task.domain.model.Team;
+import com.taskapi.task.infraestructure.persistance.entity.actionControl.TeamRoleTable;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -37,8 +38,8 @@ public class TeamTable {
   
     private boolean activo;  
   
-    @OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)  
-    private List<UsuarioXRolXEquipoTable> miembros;  
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)  
+    private List<TeamRoleTable> teamRoles; 
 
     public static TeamTable fromDomain(Team team) {  
         return TeamTable.builder()  

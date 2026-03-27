@@ -2,9 +2,9 @@ package com.taskapi.task.infraestructure.persistance.entity.logRecords;
 
 import java.time.LocalDateTime;
 
-import com.taskapi.task.infraestructure.persistance.entity.TaskStatusTable;
-import com.taskapi.task.infraestructure.persistance.entity.TaskTable;
 import com.taskapi.task.infraestructure.persistance.entity.TeamTable;
+import com.taskapi.task.infraestructure.persistance.entity.tasks.TaskStatusTable;
+import com.taskapi.task.infraestructure.persistance.entity.tasks.TaskTable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.taskapi.task.infraestructure.persistance.entity;
+package com.taskapi.task.infraestructure.persistance.entity.tasks;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

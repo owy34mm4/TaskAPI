@@ -1,5 +1,8 @@
-package com.taskapi.task.infraestructure.persistance.entity.permissions;
+package com.taskapi.task.infraestructure.persistance.entity;
 
+import com.taskapi.task.infraestructure.persistance.entity.actionControl.TeamRoleTable;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,18 +15,18 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Entity  
-@Table(name = "permissions_x_role")  
+@Table(name = "usuario_x_rol_x_equipo")  
 @Builder @Getter  
-public class PermissionsXRoleTable {  
+public class UserXRoleXTeamTable {  
   
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Long id;  
   
-    @ManyToOne(fetch = FetchType.LAZY)  
-    @JoinColumn(name = "permiso_id")  
-    private PermissionsTable permiso;  
+    // ← ID externo, módulo user  
+    @Column(name = "usuario_id", nullable = false)  
+    private Long usuarioId;  
   
     @ManyToOne(fetch = FetchType.LAZY)  
-    @JoinColumn(name = "rol_id")  
-    private RoleTable rol;  
+    @JoinColumn(name = "team_role_id")  
+    private TeamRoleTable teamRole; // ← apunta al rol dentro del equipo
 }
