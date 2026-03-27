@@ -27,7 +27,7 @@
 	  - DeleteUser -> Eliminar Usuario || status = ?
 	    
 - Equipo
-	- CreateTeam -> Crear Equipo || status = ?
+	- CreateTeam -> Crear Equipo || status = GoodToGo {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
 	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = ?
 	-  JoinUserToATeam -> Ingresar usuario a un Equipo || status = ?
 	- RemoveUserFromATeam -> Eliminar Usuario de un Equipo || status = ?
