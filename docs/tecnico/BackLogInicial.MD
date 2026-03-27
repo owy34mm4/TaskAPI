@@ -27,11 +27,16 @@
 	  - DeleteUser -> Eliminar Usuario || status = ?
 	    
 - Equipo
-	- CreateTeam -> Crear Equipo || status = GoodToGo {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
+	- CreateTeam -> Crear Equipo || status = Funcionando[Falta test y Swagger]: {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
+
 	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = ?
+
 	-  JoinUserToATeam -> Ingresar usuario a un Equipo || status = ?
+
 	- RemoveUserFromATeam -> Eliminar Usuario de un Equipo || status = ?
+
 	- ChangeTeamName -> Cambiar Nombre del Equipo || status = ?
+	
 	- DeleteTeam -> Eliminar Equipo || status = ?
 	  
 		- Rol
