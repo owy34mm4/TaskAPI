@@ -58,4 +58,13 @@ public class JwtService {
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
     }
+
+    public JwtSkeleton extractSkeleton(String token) {  
+    Claims claims = extractClaims(token);  
+      
+    return JwtSkeleton.of(  
+        claims.get("id", Long.class),  
+        claims.getSubject()  
+    );  
+}
 }
