@@ -1,4 +1,4 @@
-package com.taskapi.security.application.handler;
+package com.taskapi.user.application.hanlder;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -19,11 +19,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.taskapi.security.application.JwtService;
-import com.taskapi.security.application.useCase.command.CreateUserCommand;
-import com.taskapi.security.application.useCase.handler.CreateUserHandler;
+import com.taskapi.shared.application.port.out.security.IJwtConsumer;
 import com.taskapi.shared.domain.exceptions.BussinesRuleException;
 import com.taskapi.user.application.port.out.IUserRepository;
+import com.taskapi.user.application.useCase.command.CreateUserCommand;
+import com.taskapi.user.application.useCase.handler.CreateUserHandler;
 import com.taskapi.user.domain.model.User;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +31,7 @@ public class CreateUserHandlerTest {
     @Mock
     private IUserRepository userRepository;
     @Mock
-    private JwtService jwtService;
+    private IJwtConsumer jwtService;
 
     @InjectMocks
     private CreateUserHandler handler;

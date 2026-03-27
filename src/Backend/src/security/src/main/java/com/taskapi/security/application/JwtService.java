@@ -6,7 +6,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.taskapi.security.domain.JwtSkeleton;
+import com.taskapi.shared.application.port.out.security.IJwtConsumer;
+import com.taskapi.shared.domain.model.JwtSkeleton;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -16,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class JwtService {
+public class JwtService implements IJwtConsumer {
 
     @Value("${jwt.secret}")
     private String secretKey;

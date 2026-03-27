@@ -1,4 +1,4 @@
-package com.taskapi.security.application;
+package com.taskapi.user.application.hanlder;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,10 +20,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.taskapi.security.application.useCase.command.LogInUserCommand;
-import com.taskapi.security.application.useCase.handler.LogInUserHandler;
+import com.taskapi.shared.application.port.out.security.IJwtConsumer;
 import com.taskapi.shared.domain.exceptions.BussinesRuleException;
 import com.taskapi.user.application.port.out.IUserRepository;
+import com.taskapi.user.application.useCase.command.LogInUserCommand;
+import com.taskapi.user.application.useCase.handler.LogInUserHandler;
 import com.taskapi.user.domain.model.User;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,7 +34,7 @@ public class LogInUserHanlderTest {
     private IUserRepository userRepository;
     
     @Mock
-    private JwtService jwtService;
+    private IJwtConsumer jwtService;
 
     @InjectMocks 
     LogInUserHandler handler;

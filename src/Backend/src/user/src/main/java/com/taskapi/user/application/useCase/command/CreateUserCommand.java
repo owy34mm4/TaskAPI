@@ -1,4 +1,4 @@
-package com.taskapi.security.application.useCase.command;
+package com.taskapi.user.application.useCase.command;
 
 import lombok.Builder;
 import lombok.Getter;

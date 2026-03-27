@@ -1,8 +1,8 @@
-package com.taskapi.security.application.port.in;
+package com.taskapi.user.application.port.in;
 
 import java.util.Map;
 
-import com.taskapi.security.application.useCase.command.CreateUserCommand;
+import com.taskapi.user.application.useCase.command.CreateUserCommand;
 
 
 public interface ICreateUserUseCase {

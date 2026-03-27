@@ -1,8 +1,8 @@
 package com.taskapi.security.infraestructure.filter;
 
 import com.taskapi.security.application.JwtService;
-import com.taskapi.security.domain.JwtSkeleton;
 import com.taskapi.security.infraestructure.adapter.UserDetailsServiceAdapter;
+import com.taskapi.shared.domain.model.JwtSkeleton;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

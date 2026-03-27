@@ -1,15 +1,15 @@
-package com.taskapi.security.application.useCase.handler;
+package com.taskapi.user.application.useCase.handler;
 
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.taskapi.security.application.JwtService;
-import com.taskapi.security.application.port.in.ILogInUserUseCase;
-import com.taskapi.security.application.useCase.command.LogInUserCommand;
-import com.taskapi.security.domain.JwtSkeleton;
+import com.taskapi.shared.application.port.out.security.IJwtConsumer;
 import com.taskapi.shared.domain.exceptions.BussinesRuleException;
+import com.taskapi.shared.domain.model.JwtSkeleton;
+import com.taskapi.user.application.port.in.ILogInUserUseCase;
 import com.taskapi.user.application.port.out.IUserRepository;
+import com.taskapi.user.application.useCase.command.LogInUserCommand;
 import com.taskapi.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class LogInUserHandler implements ILogInUserUseCase {
 
     private final IUserRepository userRepository;
 
-    private final JwtService jwtService;
+    private final IJwtConsumer jwtService;
 
     private boolean usernameOrEmailNotAsociatedToAnyUser(String valueToCheck){
         return !userRepository.existsByUsernameOrEmail(valueToCheck);

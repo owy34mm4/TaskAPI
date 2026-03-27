@@ -1,4 +1,4 @@
-package com.taskapi.security.domain;
+package com.taskapi.shared.domain.model;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,6 +1,8 @@
 package com.taskapi.web.infraestructure.entryPoints.dto.user.logInUser;
 
-import com.taskapi.security.application.useCase.command.LogInUserCommand;
+
+
+import com.taskapi.user.application.useCase.command.LogInUserCommand;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

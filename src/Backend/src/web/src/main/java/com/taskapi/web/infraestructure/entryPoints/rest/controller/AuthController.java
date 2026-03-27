@@ -2,9 +2,8 @@ package com.taskapi.web.infraestructure.entryPoints.rest.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.taskapi.security.application.port.in.ICreateUserUseCase;
-import com.taskapi.security.application.port.in.ILogInUserUseCase;
+import com.taskapi.user.application.port.in.ICreateUserUseCase;
+import com.taskapi.user.application.port.in.ILogInUserUseCase;
 import com.taskapi.web.infraestructure.entryPoints.dto.user.createUser.RequestCreateUser;
 import com.taskapi.web.infraestructure.entryPoints.dto.user.createUser.ResponseCreateUser;
 import com.taskapi.web.infraestructure.entryPoints.dto.user.logInUser.RequestLogInUser;

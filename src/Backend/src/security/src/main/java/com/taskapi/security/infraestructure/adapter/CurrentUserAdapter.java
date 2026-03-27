@@ -3,10 +3,9 @@ package com.taskapi.security.infraestructure.adapter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-
-import com.taskapi.security.domain.JwtSkeleton;
 import com.taskapi.shared.domain.ICurrentUser;
 import com.taskapi.shared.domain.exceptions.BussinesRuleException;
+import com.taskapi.shared.domain.model.JwtSkeleton;
 
 @Component
 public class CurrentUserAdapter implements ICurrentUser {
