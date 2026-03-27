@@ -6,7 +6,9 @@ plugins {
 dependencies{
     testImplementation testFixtures(project(':shared-kernel'))
     
+    implementation project(':task')
     implementation project(':user')
+
     implementation project(':security')
     implementation project(':web')
     implementation project(':shared-kernel')
