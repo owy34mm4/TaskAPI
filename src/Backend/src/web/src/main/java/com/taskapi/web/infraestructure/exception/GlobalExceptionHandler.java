@@ -19,7 +19,8 @@ public class GlobalExceptionHandler {
     private ResponseEntity<ErrorResponse> buildResponse(  
         HttpStatus status,  
         String message,  
-        String path  
+        String path,
+        Object stack
     ) {  
         return ResponseEntity.status(status).body(  
             new ErrorResponse(  
@@ -27,7 +28,9 @@ public class GlobalExceptionHandler {
                 status.getReasonPhrase(),  
                 message,  
                 path,  
-                LocalDateTime.now()  
+                LocalDateTime.now(),
+                stack
+
             )  
         );  
     }
@@ -41,7 +44,8 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.CONFLICT,  
             ex.getMessage(),  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );
 
     }
@@ -54,7 +58,8 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.CONFLICT,  
             ex.getMessage(),  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );
 
     }
@@ -67,7 +72,8 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.INTERNAL_SERVER_ERROR,  
             "Unexpected error",  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );  
     }
 

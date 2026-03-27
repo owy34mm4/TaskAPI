@@ -7,7 +7,8 @@ public record ErrorResponse(
     String error,
     String message,
     String path,
-    LocalDateTime timestamp
+    LocalDateTime timestamp,
+    Object stack
 ) {
     
 }
