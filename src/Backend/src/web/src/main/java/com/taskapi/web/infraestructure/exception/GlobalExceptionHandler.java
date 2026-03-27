@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.taskapi.shared.domain.exceptions.BussinesRuleException;
 import com.taskapi.shared.domain.exceptions.InvalidPropertiesGiven;
 import com.taskapi.shared.domain.exceptions.NotFoundException;
 import com.taskapi.web.infraestructure.exception.dto.ErrorResponse;
@@ -53,6 +54,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFoundException(
         NotFoundException ex,
+        HttpServletRequest request
+    ){
+        return buildResponse(  
+            HttpStatus.CONFLICT,  
+            ex.getMessage(),  
+            request.getRequestURI(),
+            ex.getStackTrace()
+        );
+
+    }
+
+    @ExceptionHandler(BussinesRuleException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(
+        BussinesRuleException ex,
         HttpServletRequest request
     ){
         return buildResponse(  
