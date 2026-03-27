@@ -51,5 +51,10 @@ public class UserRepositoryAdapter implements IUserRepository {
         return repository.findByEmailOrUsername(value)
             .orElseThrow(()-> new NotFoundException("User")).toDomain();
     }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return  repository.existsByUsername(username);
+    }
     
 }

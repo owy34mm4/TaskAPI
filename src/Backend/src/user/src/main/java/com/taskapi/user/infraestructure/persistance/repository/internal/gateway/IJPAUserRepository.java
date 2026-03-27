@@ -13,6 +13,8 @@ import com.taskapi.user.infraestructure.persistance.entity.UserTable;
 public interface IJPAUserRepository extends JpaRepository<UserTable, Long>{
 
     boolean existsByEmail(String email);
+    
+    boolean existsByUsername(String username);
 
     Optional<UserTable> findByEmail(String email);
 
@@ -21,4 +23,6 @@ public interface IJPAUserRepository extends JpaRepository<UserTable, Long>{
 
     @Query("SELECT u FROM UserTable u WHERE u.email = :value OR u.username = :value")  
     Optional<UserTable> findByEmailOrUsername(@Param("value") String value);
+
+   
 }

@@ -25,8 +25,12 @@ public class CreateUserHandler implements ICreateUserUseCase {
     @Override
     public Map<String,Object> execute(CreateUserCommand cmd) {
         if (userRepository.existsByEmail(cmd.getEmail())) {
-            throw new BussinesRuleException("El email ya está registrado");
+            throw new BussinesRuleException("Cliente ya registrado");
         }
+        if (userRepository.existsByUsername(cmd.getUsername())){
+            throw new BussinesRuleException("Cliente ya registrado");
+        }
+        
         User nuevoUser = User.create(cmd.getEmail(), cmd.getName(),cmd.getUsername(), cmd.getPassword());
         var userSaved = userRepository.save(nuevoUser);
         
