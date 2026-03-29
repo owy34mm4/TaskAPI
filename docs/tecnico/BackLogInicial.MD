@@ -31,12 +31,12 @@
 
 	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = ?
 
-	-  JoinUserToATeam -> Ingresar usuario a un Equipo || status = ?
+	-  JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Faltan Tests y Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
 
 	- RemoveUserFromATeam -> Eliminar Usuario de un Equipo || status = ?
 
 	- ChangeTeamName -> Cambiar Nombre del Equipo || status = ?
-	
+
 	- DeleteTeam -> Eliminar Equipo || status = ?
 	  
 		- Rol
