@@ -1,5 +1,9 @@
 package com.taskapi.task.application.useCase.handler;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +32,7 @@ public class CreateTeamHandler implements ICreateTeamUseCase {
     private final ITeamRoleRepository teamRoleRepository;
     private final IUserXRoleXTeamRepository userXRoleXTeamRepository;
 
+    private final List<String> SYSTEM_ROLES = List.of("OWNER", "OBSERVER");
     private boolean doesNotExists(Long id){
         return !userRepository.existsById(id);
     }
@@ -42,14 +47,17 @@ public class CreateTeamHandler implements ICreateTeamUseCase {
             var teamCreated = Team.create(cmd.getName(), requesterId);
             teamCreated = teamRepository.save(teamCreated);
 
-        //Obtenemos el id del Rol 'OWNER', generado como rol de sistema
-            Long ownerRoleId = roleRepository.findIdByCode("OWNER");
+        //Generamos los roles de sistema de cada equipo 
+        Map<String, Long> teamRoleIds = new HashMap<>();
+        for(String roleCode : SYSTEM_ROLES){
+            Long roleId = roleRepository.findIdByCode(roleCode);
+            Long teamRoleId = teamRoleRepository.saveTeamRole(teamCreated.getId(), roleId);
+            teamRoleIds.put(roleCode, teamRoleId);
+        }
 
-        //Creamos el 'teamRole' (vinculamos el equipo con el Rol owner)
-            Long TeamRoleId = teamRoleRepository.saveTeamRole(teamCreated.getId(), ownerRoleId);
-
+       
         //Asiganos requester al rol owner
-        userXRoleXTeamRepository.assignUserToTeamRole(requesterId, TeamRoleId);
+        userXRoleXTeamRepository.assignUserToTeamRole(requesterId, teamRoleIds.get("OWNER"));
 
         return teamCreated;
     }
