@@ -14,12 +14,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity  
 @Table(name = "teams")  
 @Builder @Getter  
+@NoArgsConstructor
+@AllArgsConstructor
 public class TeamTable {  
   
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)  
@@ -33,7 +37,8 @@ public class TeamTable {
     // ← referencia por ID, no por entidad (módulo user separado)  
     @Column(name = "dueno_id", nullable = false)  
     private Long duenoId;  
-  
+    
+    @Column(name = "codigo_identificacion", unique= true)
     private String codigoIdentificacion;  
   
     private boolean activo;  

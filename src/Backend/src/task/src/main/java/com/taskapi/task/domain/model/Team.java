@@ -1,6 +1,7 @@
 package com.taskapi.task.domain.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.taskapi.shared.application.port.out.user.UserExternalDTO;
 import com.taskapi.task.domain.valueObject.EquipoCodigoIdentificacion;
@@ -26,6 +27,8 @@ public class Team {
 
     private boolean active;
 
+    private List<UserExternalDTO> members;
+
 
     public static Team create(String name, Long owner_id){
         return Team.builder()
@@ -48,5 +51,7 @@ public class Team {
             .active(active)
         .build();
     }
+
+    
     
 }

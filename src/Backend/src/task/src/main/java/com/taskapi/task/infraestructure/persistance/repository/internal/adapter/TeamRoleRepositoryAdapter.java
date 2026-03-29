@@ -2,7 +2,9 @@ package com.taskapi.task.infraestructure.persistance.repository.internal.adapter
 
 import org.springframework.stereotype.Repository;
 
+import com.taskapi.shared.domain.exceptions.NotFoundException;
 import com.taskapi.task.application.port.out.ITeamRoleRepository;
+import com.taskapi.task.domain.model.TeamRole;
 import com.taskapi.task.infraestructure.persistance.entity.TeamTable;
 import com.taskapi.task.infraestructure.persistance.entity.actionControl.RoleTable;
 import com.taskapi.task.infraestructure.persistance.entity.actionControl.TeamRoleTable;
@@ -30,6 +32,14 @@ public class TeamRoleRepositoryAdapter implements ITeamRoleRepository {
         .build();
 
         return repository.save(entity).getId();
+    }
+
+    @Override
+    public TeamRole findByTeamIdAndRoleId(Long teamId, Long roleId) {
+        return repository.findByTeam_IdAndRole_Id(teamId, roleId)
+            .orElseThrow(
+                ()-> new NotFoundException("TeamRole ")
+            ).toDomain();
     }
     
 }

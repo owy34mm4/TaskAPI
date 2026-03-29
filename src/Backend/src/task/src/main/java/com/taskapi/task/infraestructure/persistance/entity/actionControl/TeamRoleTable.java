@@ -1,6 +1,5 @@
 package com.taskapi.task.infraestructure.persistance.entity.actionControl;
 
-import com.taskapi.task.domain.model.Team;
 import com.taskapi.task.domain.model.TeamRole;
 import com.taskapi.task.infraestructure.persistance.entity.TeamTable;
 

@@ -18,7 +18,7 @@ public class RoleRepositoryAdapter implements IRoleRepository {
     @Override
     public Long findIdByCode(String code) {
         return jpa.findByCode(code)
-            .orElseThrow(()-> new NotFoundException("Role By Code"))
+            .orElseThrow(()-> new NotFoundException("Role By Code "))
             .getId();
         
     }
