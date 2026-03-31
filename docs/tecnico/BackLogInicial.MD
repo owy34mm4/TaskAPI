@@ -20,8 +20,8 @@
 - Backend ->
   
   - Usuario
-	  - CreateUser -> Crear Usuario || status = ?
-	  - GetUserByEmailAndPassword -> Obtener Usuario Por Email y Contraseña || status = ?
+	  - CreateUser -> Crear Usuario || status = Funcionando[Falta Swagger]: {retorna data y JWT}
+	  - GetUserByEmailAndPassword -> Obtener Usuario Por Email y Contraseña/LogIn || status = Funcionando[falta Swagger] : {retorna JWT}
 	  - GetAllUsers -> Traer Todos los usuarios || status = ?
 	  - ChangePassword -> Cambiar Contraseña || status = ?
 	  - DeleteUser -> Eliminar Usuario || status = ?
@@ -31,7 +31,7 @@
 
 	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = ?
 
-	-  JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Faltan Tests y Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
+	- JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Faltan Tests y Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
 
 	- RemoveUserFromATeam -> Eliminar Usuario de un Equipo || status = ?
 
@@ -50,10 +50,8 @@
 			- GetAllTasks -> Traer Todas las tasks || status = ?
 			- GetAllHistoryTaskByTeamId -> Obtener todos los historicos de Tarea por EquipoId || status = ?
 			- DeleteTaskById -> Eliminar Tarea Por Id || status = ?
+
 ------
-
-
-
 
 
 - Frontend-> 
