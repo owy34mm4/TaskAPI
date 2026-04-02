@@ -1,10 +1,11 @@
 package com.taskapi.shared.application.port.out.user;
 
-import java.util.List;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class UserExternalDTO {
 
     private Long id;
@@ -19,5 +20,4 @@ public class UserExternalDTO {
 
     private boolean active;
 
-    private List<Long> equipos_ids;
 }

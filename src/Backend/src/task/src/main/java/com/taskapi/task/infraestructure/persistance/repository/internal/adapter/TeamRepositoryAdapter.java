@@ -1,5 +1,7 @@
 package com.taskapi.task.infraestructure.persistance.repository.internal.adapter;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.taskapi.shared.domain.exceptions.NotFoundException;
@@ -26,6 +28,19 @@ public class TeamRepositoryAdapter implements ITeamRepository {
     @Override
     public Team findByCode(String teamCode) {
         return repository.findByCode(teamCode).orElseThrow(()-> new NotFoundException("Team by Code")).toDomain();
+    }
+
+
+    @Override
+    public List<Team> findAllByUserId(Long userId) {
+        return repository.findAllByUserId(userId)
+            .orElseThrow(
+                ()-> new NotFoundException("TeamByUserId ")
+            )
+            .stream()
+            .map(
+                item -> item.toDomain()
+            ).toList();
     }
     
 }

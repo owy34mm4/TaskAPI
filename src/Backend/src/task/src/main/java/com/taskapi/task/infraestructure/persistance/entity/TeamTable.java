@@ -51,7 +51,7 @@ public class TeamTable {
             .id(team.getId())  
             .nombre(team.getName())  
             .creacion(team.getCreacion())  
-            .duenoId(team.getOwner_id())  
+            .duenoId(team.getOwner().getOwnerId())  
             .codigoIdentificacion(team.getCodigo_identificacion().getValue())  
             .activo(team.isActive())  
             .build();  

@@ -1,5 +1,7 @@
 package com.taskapi.task.infraestructure.persistance.repository.internal.adapter;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.taskapi.task.application.port.out.IUserXRoleXTeamRepository;
@@ -32,6 +34,11 @@ public class UserXRoleXTeamRepositoryAdapter implements IUserXRoleXTeamRepositor
     @Override
     public boolean userHasRoleInTeam(Long userId, Long teamId, String roleCode) {
         return jpa.existsByUsuarioIdAndTeamRole_Team_IdAndTeamRole_Role_Code(userId, teamId, roleCode);
+    }
+
+    @Override
+    public List<Object[]> findMemberIdsByTeamIds(List<Long> teamId) {
+        return jpa.findMemberIdsByTeamIds(teamId);
     }
     
 }
