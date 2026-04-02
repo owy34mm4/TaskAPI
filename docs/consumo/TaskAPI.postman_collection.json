@@ -3,8 +3,7 @@
     "_postman_id": "9736520f-29d5-4629-81dc-ff39c959de05",
     "name": "TaskAPI",
     "description": "REST API for task management",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "47265938"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
@@ -137,6 +136,21 @@
       "item": [
         {
           "name": "CreateTeam",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"teamCode\", jsonData.identificationCode)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "auth": {
               "type": "bearer",
@@ -152,7 +166,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{    \r\n    \"name\": \"PruebaHappy\"\r\n}",
+              "raw": "{    \r\n    \"name\": \"CreateTeamPruebaHappy\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -167,6 +181,64 @@
               "path": [
                 "team",
                 "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "JoinMemberToTeam",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_uri}}/team/joinTeam/{{teamCode}}",
+              "host": [
+                "{{base_uri}}"
+              ],
+              "path": [
+                "team",
+                "joinTeam",
+                "{{teamCode}}"
+              ]
+            },
+            "description": "Esta peticion está orientada a la funcion 'touchUrl'.\n\nSe hace una peticion al recurso, el recurso genera la accion a través de extraer el JWT de los headers"
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllTeamsByUserId",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_uri}}/team/getAllByUserId",
+              "host": [
+                "{{base_uri}}"
+              ],
+              "path": [
+                "team",
+                "getAllByUserId"
               ]
             }
           },

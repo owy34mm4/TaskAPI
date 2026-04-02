@@ -6,11 +6,11 @@
 
     - Requerimientos Mínimos ->
 
-      - Arquitectura -> ???
+      - Arquitectura -> Hexagonal Vertical Slicing && ???
 
-      - Lenguajes -> ???
+      - Lenguajes -> Java && ???
 
-      - FrameWorks -> ???
+      - FrameWorks -> Spring && ??? 
 
 	### BACKLOG
 
@@ -29,7 +29,7 @@
 - Equipo
 	- CreateTeam -> Crear Equipo || status = Funcionando[Falta test y Swagger]: {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
 
-	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = ?
+	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = Funcionando [ Falta Test y Swagger] : Obtiene todos los teams con la data interna, requiere JWT
 
 	- JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Faltan Tests y Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
 
@@ -45,8 +45,8 @@
 			- AssingRolesToAUser -> Asignar Roles a un usuario || status = ?
 			  
 		- Tarea
-			-  CreateTask -> Crear Tarea || status = ?
-			-  AssingUsersToATask-> Asignar Usuarios a una Tarea || status = ?
+			- CreateTask -> Crear Tarea || status = ?
+			- AssingUsersToATask-> Asignar Usuarios a una Tarea || status = ?
 			- GetAllTasks -> Traer Todas las tasks || status = ?
 			- GetAllHistoryTaskByTeamId -> Obtener todos los historicos de Tarea por EquipoId || status = ?
 			- DeleteTaskById -> Eliminar Tarea Por Id || status = ?
@@ -56,21 +56,21 @@
 
 - Frontend-> 
 	- Vista Inicio Sesion
-		 - Botón Olvidó Contraseña || status =?
+		- Botón Olvidó Contraseña || status =?
 		- Boton Login || status =?
 		- Contraseña Oculta ( Boton ojito ) || status =?
 	- Vista DashBoard Seleccion Equipos del usuario ( HomePage)
 		- Modal Y Boton para unirse a un equipo  || status =?
-		-   Botón Crear Equipo  || status =?
+		- Botón Crear Equipo  || status =?
 		- Listado con todos los equipos a los que pertenece el usuario || status =?
 	- Vista DashBoard Equipo Seleccionado
-		  -  Si es admin, permite acciones de edicion || status =?
+		  - Si es admin, permite acciones de edicion || status =?
 		  - Con permisos suficientes, permite crear tareas || status =?
 	- Vista DashBoad Tareas en el Equipo
 		- Asignar Tareas a Usuarios || status =?
 		- Editar Tarea si el privilegio lo permite || status = ? 
 	- Seccion Configuraciones de la Cuenta
-		 - Boton y Modal Eliminar Cuenta  || status =?
+		- Boton y Modal Eliminar Cuenta  || status =?
 		- Cambiar informacion de Cuenta   || status =?
 	  
 -
