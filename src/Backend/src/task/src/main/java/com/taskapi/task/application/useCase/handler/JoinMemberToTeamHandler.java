@@ -33,7 +33,9 @@ public class JoinMemberToTeamHandler implements IJoinMemberToTeamUseCase {
     public void execute(JoinMemberToTeamCommand cmd) {
         Long requesterId = currentUser.getId();
 
-        if(!userRepository.existsById(requesterId)){throw new BussinesRuleException("Usuario Autenticado Invalido");}
+        if(!userRepository.existsById(requesterId)){
+            throw new BussinesRuleException("Usuario Autenticado Invalido");
+        }
 
         var team = teamRepository.findByCode(cmd.getTeamCode());
 
@@ -45,7 +47,7 @@ public class JoinMemberToTeamHandler implements IJoinMemberToTeamUseCase {
         // Buscar rol base del sistema  
         Long observerRoleId = roleRepository.findIdByCode("OBSERVER");
 
-        // Buscar o crear el team_role de ese equipo para OBSERVER  
+        // Buscar el team_role de ese equipo para OBSERVER  
         TeamRole teamRole = teamRoleRepository.findByTeamIdAndRoleId(team.getId(), observerRoleId);
 
         // Asignar usuario al teamRole  

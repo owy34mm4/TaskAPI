@@ -54,7 +54,7 @@ public class BaseE2E extends AbstractE2E{
         return login("admin", "admin123"); //<-- Se establecen en el 'init_admin.sql'
     }
 
-
+    //─── User ─────────────────────────────────────────────  
     protected ResponseEntity<ResponseCreateUser> createUser(String username, String password){
         RequestCreateUser request = RequestCreateUser.builder()
             .name("nombreTest")

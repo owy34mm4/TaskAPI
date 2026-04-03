@@ -27,11 +27,11 @@
 	  - DeleteUser -> Eliminar Usuario || status = ?
 	    
 - Equipo
-	- CreateTeam -> Crear Equipo || status = Funcionando[Falta test y Swagger]: {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
+	- CreateTeam -> Crear Equipo || status = Funcionando[Falta Swagger]: {Crea Equipo y relaciona [dueñoEquipo, Rol owner('systemRole')], requiere JWT}
 
-	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = Funcionando [ Falta Test y Swagger] : Obtiene todos los teams con la data interna, requiere JWT
+	- GetAllTeamsByUserId -> Trear todos los equipos Por Usuario ID || status = Funcionando [ Falta Swagger] : Obtiene todos los teams con la data interna, requiere JWT
 
-	- JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Faltan Tests y Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
+	- JoinUserToATeam -> Ingresar usuario a un Equipo || status = Funcionando[Falta Swagger] : {Relaciona al requester con el equipo, a través del Rol 'Observer', requiere JWT}
 
 	- RemoveUserFromATeam -> Eliminar Usuario de un Equipo || status = ?
 

@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class GetAllTeamByUserIdHandler implements IGetAllTeamsByUserId {
+public class GetAllTeamsByUserIdHandler implements IGetAllTeamsByUserId {
 
     private final ICurrentUser currentUser;
     private final IUserDataPort userRepository;

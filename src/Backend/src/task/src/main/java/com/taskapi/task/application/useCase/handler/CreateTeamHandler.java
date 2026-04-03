@@ -33,6 +33,7 @@ public class CreateTeamHandler implements ICreateTeamUseCase {
     private final IUserXRoleXTeamRepository userXRoleXTeamRepository;
 
     private final List<String> SYSTEM_ROLES = List.of("OWNER", "OBSERVER");
+
     private boolean doesNotExists(Long id){
         return !userRepository.existsById(id);
     }
@@ -41,7 +42,10 @@ public class CreateTeamHandler implements ICreateTeamUseCase {
     @Transactional
     public Team execute(CreateTeamCommand cmd) {
         var requesterId = currentUser.getId();
-        if(doesNotExists(requesterId)){throw new BussinesRuleException("Usuario Invalido");}
+
+        if(doesNotExists(requesterId)){
+            throw new BussinesRuleException("Usuario Invalido");
+        }
 
         // Creamos la entidad equipo
             var teamCreated = Team.create(cmd.getName(), requesterId);
@@ -55,8 +59,8 @@ public class CreateTeamHandler implements ICreateTeamUseCase {
             teamRoleIds.put(roleCode, teamRoleId);
         }
 
-       
-        //Asiganos requester al rol owner
+
+        //Asignamos requester al rol owner
         userXRoleXTeamRepository.assignUserToTeamRole(requesterId, teamRoleIds.get("OWNER"));
 
         return teamCreated;

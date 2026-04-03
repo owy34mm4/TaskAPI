@@ -26,14 +26,14 @@ public class TeamOwner {
 
     
     public static TeamOwner create( Long ownerId){
-        if (ownerId==null){ throw new InvalidPropertiesGiven("TeamOwner ");}
-        
+        if (ownerId==null || ownerId<=0){ throw new InvalidPropertiesGiven("TeamOwner ");}
         return TeamOwner.builder()
             .ownerId(ownerId)
         .build();
     }
 
     public TeamOwner inyectOwnerData(UserExternalDTO ownerData){
+        if (ownerData==null) {throw new InvalidPropertiesGiven("TeamOwner ");}
         this.ownerData = ownerData;
         return this;
     }

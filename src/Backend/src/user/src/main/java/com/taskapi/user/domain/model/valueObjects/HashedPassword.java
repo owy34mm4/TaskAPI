@@ -38,6 +38,7 @@ public class HashedPassword {
         return ENCODER.matches(plainPassword, this.value);
     }
 
+    
     /*Proteccion de Informacion */
     @Override  
     public String toString() {  
