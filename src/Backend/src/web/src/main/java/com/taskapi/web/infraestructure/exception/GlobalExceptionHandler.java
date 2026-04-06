@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.taskapi.shared.domain.exceptions.BussinesRuleException;
 import com.taskapi.shared.domain.exceptions.InvalidPropertiesGiven;
 import com.taskapi.shared.domain.exceptions.NotFoundException;
 import com.taskapi.web.infraestructure.exception.dto.ErrorResponse;
@@ -19,7 +20,8 @@ public class GlobalExceptionHandler {
     private ResponseEntity<ErrorResponse> buildResponse(  
         HttpStatus status,  
         String message,  
-        String path  
+        String path,
+        Object stack
     ) {  
         return ResponseEntity.status(status).body(  
             new ErrorResponse(  
@@ -27,7 +29,9 @@ public class GlobalExceptionHandler {
                 status.getReasonPhrase(),  
                 message,  
                 path,  
-                LocalDateTime.now()  
+                LocalDateTime.now(),
+                stack
+
             )  
         );  
     }
@@ -41,7 +45,8 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.CONFLICT,  
             ex.getMessage(),  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );
 
     }
@@ -54,7 +59,22 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.CONFLICT,  
             ex.getMessage(),  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
+        );
+
+    }
+
+    @ExceptionHandler(BussinesRuleException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(
+        BussinesRuleException ex,
+        HttpServletRequest request
+    ){
+        return buildResponse(  
+            HttpStatus.CONFLICT,  
+            ex.getMessage(),  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );
 
     }
@@ -67,7 +87,8 @@ public class GlobalExceptionHandler {
         return buildResponse(  
             HttpStatus.INTERNAL_SERVER_ERROR,  
             "Unexpected error",  
-            request.getRequestURI()  
+            request.getRequestURI(),
+            ex.getStackTrace()
         );  
     }
 

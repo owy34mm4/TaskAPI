@@ -5,6 +5,11 @@ server:
   port: 8080
 
 spring:
+  sql:  
+    init:  
+      mode: always  
+      data-locations: classpath:db/init.sql
+
   application:
     name: TaskAPI
 
@@ -40,6 +45,7 @@ spring:
     - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 
   jpa:
+    defer-datasource-initialization: true
     show-sql  : true
     hibernate :
       ddl-auto : create-drop # update \\ validate \\ create-drop

@@ -2,6 +2,7 @@ package com.taskapi.security.infraestructure.filter;
 
 import com.taskapi.security.application.JwtService;
 import com.taskapi.security.infraestructure.adapter.UserDetailsServiceAdapter;
+import com.taskapi.shared.domain.model.JwtSkeleton;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -45,9 +46,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
             if (jwtService.isTokenValid(token)) {
+                JwtSkeleton skeleton = jwtService.extractSkeleton(token);
                 UsernamePasswordAuthenticationToken authToken =
                     new UsernamePasswordAuthenticationToken(
-                        userDetails,
+                        skeleton,
                         null,
                         userDetails.getAuthorities()
                     );

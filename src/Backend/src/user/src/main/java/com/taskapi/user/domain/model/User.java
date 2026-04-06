@@ -1,5 +1,7 @@
 package com.taskapi.user.domain.model;
 
+import java.util.List;
+
 import com.taskapi.user.domain.model.valueObjects.HashedPassword;
 
 import lombok.Builder;
@@ -20,7 +22,7 @@ public class User {
 
     private boolean active;
 
-    private Object equipos;
+    private List<Long> equipos_ids;
 
     private Object roles;
 

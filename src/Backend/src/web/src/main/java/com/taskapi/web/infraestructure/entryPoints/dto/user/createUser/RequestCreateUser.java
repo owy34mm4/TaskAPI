@@ -1,6 +1,8 @@
 package com.taskapi.web.infraestructure.entryPoints.dto.user.createUser;
 
-import com.taskapi.security.application.useCase.command.CreateUserCommand;
+
+
+import com.taskapi.user.application.useCase.command.CreateUserCommand;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

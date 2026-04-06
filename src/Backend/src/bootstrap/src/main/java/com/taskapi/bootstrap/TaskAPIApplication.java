@@ -6,12 +6,15 @@ import org.springframework.context.annotation.Import;
 
 import com.taskapi.security.infraestructure.config.SecurityModuleConfig;
 import com.taskapi.shared.infraestructure.config.SharedKernelModuleConfig;
+import com.taskapi.task.infraestructure.config.TaskModuleConfig;
 import com.taskapi.user.infraestructure.config.UserModuleConfig;
 import com.taskapi.web.infraestructure.config.WebModuleConfig;
 
 
 @Import({
 	UserModuleConfig.class,
+	TaskModuleConfig.class,
+
 	SecurityModuleConfig.class,
 	WebModuleConfig.class,
 	SharedKernelModuleConfig.class

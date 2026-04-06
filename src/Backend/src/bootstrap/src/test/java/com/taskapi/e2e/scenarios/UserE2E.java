@@ -17,7 +17,7 @@ public class UserE2E extends BaseE2E{
         ResponseCreateUser response = createUser("usernamePruebaE2E", "PasswordPruebaE2E").getBody();
         assertNotNull(response);
     }
-
+/// Test 2 : Loguear un usuario ya existente
     @Test
     @DisplayName("Escenario: Requester Desautorizado obtiene autorizacion | Login User")
     void unauthorized_gets_authorization(){

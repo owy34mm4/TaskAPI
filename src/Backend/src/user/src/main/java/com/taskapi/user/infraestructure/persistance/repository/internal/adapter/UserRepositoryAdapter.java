@@ -1,6 +1,8 @@
 package com.taskapi.user.infraestructure.persistance.repository.internal.adapter;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.taskapi.shared.domain.exceptions.NotFoundException;
@@ -50,6 +52,21 @@ public class UserRepositoryAdapter implements IUserRepository {
     public User findByUsernameOrEmail(String value) {
         return repository.findByEmailOrUsername(value)
             .orElseThrow(()-> new NotFoundException("User")).toDomain();
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return  repository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        return repository.existsById(id);
+    }
+
+    @Override
+    public List<User> findAllById(List<Long> ids) {
+        return repository.findAllById(ids).stream().map(item -> item.toDomain()).toList();
     }
     
 }
